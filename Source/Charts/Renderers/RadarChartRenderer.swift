@@ -168,10 +168,6 @@ open class RadarChartRenderer: LineRadarRenderer
             context.setLineWidth(dataSet.lineWidth)
             context.setAlpha(1.0)
 
-            context.beginPath()
-            context.addPath(path)
-            context.strokePath()
-
             if dataSet.formLineDashLengths != nil
             {
                 context.setLineDash(phase: dataSet.formLineDashPhase, lengths: dataSet.formLineDashLengths!)
@@ -180,6 +176,10 @@ open class RadarChartRenderer: LineRadarRenderer
             {
                 context.setLineDash(phase: 0.0, lengths: [])
             }
+
+            context.beginPath()
+            context.addPath(path)
+            context.strokePath()
 
             let axElement = createAccessibleElement(withDescription: accessibilityDataSetDescription,
                                                     container: chart,
